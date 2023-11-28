@@ -1,3 +1,4 @@
+```
 Rapport de Classification :
                precision    recall  f1-score   support
 
@@ -7,3 +8,4 @@ Rapport de Classification :
     accuracy                           1.00   1272524
    macro avg       1.00      1.00      1.00   1272524
 weighted avg       1.00      1.00      1.00   1272524
+```
