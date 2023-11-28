@@ -61,7 +61,7 @@ ordre_des_colonnes = ['step', 'type', 'amount', 'nameOrig', 'oldbalanceOrg', 'ne
                       'nameDest', 'oldbalanceDest', 'newbalanceDest', 'isFraud', 'isFlaggedFraud']
 
 # Chargement du fichier CSV nettoyé dans un DataFrame avec Pandas
-df = pd.read_csv('../bank_nettoye.csv')
+df = pd.read_csv('../data/bank_clean.csv')
 
 # Sélection des colonnes numériques dans le DataFrame
 X = df.select_dtypes(include=['float64', 'int64'])
