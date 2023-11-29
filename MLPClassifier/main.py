@@ -1,31 +1,14 @@
-import pandas as pd
-import numpy as np
-import seaborn as sns
-from matplotlib import pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, precision_score, recall_score, roc_curve, auc
-from sklearn.preprocessing import StandardScaler
+# Importation des modules nécessaires
 from sklearn.neural_network import MLPClassifier
-from sklearn.pipeline import make_pipeline
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, binarize
+from sklearn.metrics import precision_score, recall_score, roc_auc_score, confusion_matrix, roc_curve, auc, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
 import os
 
-# Configuration de la visualisation
-sns.set()
-
-# Fonction pour tracer la courbe ROC
-def plot_roc_curve(y_true, y_scores):
-    fpr, tpr, thresholds = roc_curve(y_true, y_scores)
-    roc_auc = auc(fpr, tpr)
-    plt.figure(figsize=(8, 6))
-    plt.plot(fpr, tpr, color='darkorange', lw=2, label='Courbe ROC (AUC = {:.2f})'.format(roc_auc))
-    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-    plt.xlabel('Taux de Faux Positifs')
-    plt.ylabel('Taux de Vrais Positifs')
-    plt.title('Courbe ROC')
-    plt.legend(loc='lower right')
-    plt.show()
-
-# Fonction pour tracer la matrice de confusion
+# Fonction pour plotter la matrice de confusion
 def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
     y_pred = (y_scores > threshold).astype(int)
     cm = confusion_matrix(y_true, y_pred)
@@ -38,37 +21,69 @@ def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
     plt.title('Matrice de Confusion')
     plt.show()
 
-# Définir l'ordre des colonnes
-ordre_des_colonnes = ['step', 'type', 'amount', 'nameOrig', 'oldbalanceOrg', 'newbalanceOrig',
-                      'nameDest', 'oldbalanceDest', 'newbalanceDest', 'isFraud', 'isFlaggedFraud']
-
+# Chargement du fichier CSV nettoyé depuis le chemin spécifique
 script_directory = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_directory, '..', 'data', 'bank_clean.csv')
-
-# Charger le fichier CSV nettoyé dans un DataFrame
+file_path = os.path.join(script_directory, '..', 'data', 'bank.csv')
 df = pd.read_csv(file_path)
 
-# Sélectionner uniquement les colonnes numériques
-X = df.select_dtypes(include=['float64', 'int64'])
+# Initialisation de la fonction LabelEncoder()
+label_encoder = LabelEncoder()
 
-# Diviser les données en ensembles d'entraînement et de test
-X_train, X_test, y_train, y_test = train_test_split(X, df['isFraud'], test_size=0.2, random_state=42)
+# Conversion des données catégorielles en données numériques utilisables par le modèle
+df['type'] = label_encoder.fit_transform(df['type'])
+df['nameOrig'] = label_encoder.fit_transform(df['nameOrig'])
+df['nameDest'] = label_encoder.fit_transform(df['nameDest'])
 
-# Initialiser un modèle de réseau de neurones
-model = make_pipeline(StandardScaler(), MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=1000, random_state=42))
+# Définition de la donnée cible
+X = df.drop('isFraud', axis=1)
+y = df['isFraud']
 
-# Entraîner le modèle sur l'ensemble d'entraînement
-model.fit(X_train, y_train)
+# Binarisation de la variable cible
+y_binary = binarize(y.values.reshape(-1, 1)).ravel()
 
-# Faire des prédictions sur l'ensemble de test
-predictions = model.predict(X_test)
+# Division du Dataset en un ensemble d'entraînement et un ensemble de test
+X_train, X_test, y_train, y_test = train_test_split(X, y_binary, test_size=0.2, random_state=125)
 
-# Obtenir les probabilités des prédictions pour la courbe ROC
-y_scores = model.predict_proba(X_test)[:, 1]
+# MLPClassifier
+mlp_classifier = MLPClassifier(hidden_layer_sizes=(100,), max_iter=1000, random_state=125)
+mlp_classifier.fit(X_train, y_train)
 
-# Évaluer les performances du modèle
-plot_confusion_matrix(y_test, y_scores)
-plot_roc_curve(y_test, y_scores)
+# Test du modèle
+predictions = mlp_classifier.predict(X_test)
+
+# Binarisation des prédictions
+predictions_binary = binarize(predictions.reshape(-1, 1)).ravel()
+
+# Calcul de la précision, du rappel et de l'AUC
+precision = precision_score(y_test, predictions_binary)
+recall = recall_score(y_test, predictions_binary)
+roc_auc = roc_auc_score(y_test, predictions)
+
+# Affichage des résultats d'évaluation
+print("Précision: {:.2f}".format(precision))
+print("Rappel: {:.2f}".format(recall))
+print("Aire sous la courbe ROC (AUC): {:.2f}".format(roc_auc))
+
+# Évaluer les performances du modèle avec confusion_matrix
+cm = confusion_matrix(y_test, predictions_binary)
+print("Matrice de Confusion:")
+print(cm)
+
+# Afficher la matrice de confusion sous forme de diagramme avec seaborn
+plot_confusion_matrix(y_test, predictions_binary)
+
+# Afficher la courbe ROC
+fpr, tpr, thresholds = roc_curve(y_test, predictions)
+area_under_curve = auc(fpr, tpr)
+
+plt.figure()
+plt.plot(fpr, tpr, color='darkorange', lw=2, label='Courbe ROC (AUC = {:.2f})'.format(area_under_curve))
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+plt.xlabel('Taux de faux positifs')
+plt.ylabel('Taux de vrais positifs')
+plt.title('Courbe ROC')
+plt.legend(loc="lower right")
+plt.show()
 
 # Afficher le rapport de classification
-print("Rapport de Classification :\n", classification_report(y_test, predictions))
+print("Rapport de Classification :\n", classification_report(y_test, predictions_binary))
