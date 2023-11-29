@@ -8,10 +8,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Fonction pour plotter la matrice de confusion
+# Fonction pour afficher la matrice de confusion
 def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
+    # Binarisation des prédictions avec un seuil spécifié
     y_pred = (y_scores > threshold).astype(int)
+    
+    # Calcul de la matrice de confusion
     cm = confusion_matrix(y_true, y_pred)
+    
+    # Affichage de la matrice de confusion avec seaborn
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False,
                 xticklabels=["Pas de Fraude", "Fraude"],
@@ -44,7 +49,7 @@ y_binary = binarize(y.values.reshape(-1, 1)).ravel()
 # Division du Dataset en un ensemble d'entraînement et un ensemble de test
 X_train, X_test, y_train, y_test = train_test_split(X, y_binary, test_size=0.2, random_state=125)
 
-# MLPClassifier
+# Initialisation du modèle MLPClassifier avec une couche cachée de 100 neurones
 mlp_classifier = MLPClassifier(hidden_layer_sizes=(100,), max_iter=1000, random_state=125)
 mlp_classifier.fit(X_train, y_train)
 
