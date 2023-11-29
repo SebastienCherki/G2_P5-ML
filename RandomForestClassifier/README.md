@@ -23,21 +23,28 @@ weighted avg       1.00      1.00      1.00   1272524
 Le modèle RandomForestClassifier a été évalué pour sa capacité à **détecter la fraude** dans les transactions. Les résultats obtenus sont les suivants :
 
 ### Précision:
-Le modèle présente une **précision de 0.92**, indiquant une fiabilité d'environ 92% lorsqu'il prédit une fraude.
+Le modèle présente une **précision de 0.98**, indiquant une fiabilité exceptionnelle d'environ 98% lorsqu'il prédit une fraude.
 
 ### Rappel:
-Avec un **rappel de 0.68**, le modèle réussit à **capturer environ 68%** de toutes les transactions frauduleuses.
+Avec un **rappel de 0.79**, le modèle réussit à **capturer environ 79%** de toutes les transactions frauduleuses.
 
 ### Aire sous la courbe ROC (AUC):
-L'**AUC atteint 0.85**, démontrant une capacité de discrimination élevée.
+L'**AUC atteint 0.89**, démontrant une capacité solide du modèle à discriminer entre les classes.
 
-### Interprétation:
+### Matrice de Confusion:
+La matrice révèle un grand nombre de **vrais négatifs (transactions non frauduleuses)** correctement classées, avec seulement quelques **faux négatifs (fraudes manquées)**.
 
-Le modèle RandomForestClassifier démontre une **excellente précision** et une capacité **solide à capturer les fraudes**. Son **rappel équilibré** et son **AUC élevé** soulignent son efficacité dans la détection de la fraude.
+### Rapport de Classification:
+Le rapport détaille davantage la performance du modèle, mettant en évidence une **précision exceptionnellement élevée** et un **rappel solide**.
+
+## Interprétation:
+
+Le modèle RandomForestClassifier démontre une **excellente précision**, assurant une fiabilité exceptionnelle lorsqu'il prédit une fraude. Son **rappel solide** indique une capacité notable à capturer la majorité des fraudes. L'**AUC élevé** confirme la capacité du modèle à discriminer entre les classes.
 
 ## Implications Pratiques:
 
-- Le modèle est **très efficace pour identifier les transactions non frauduleuses**.
-- Sa capacité à **capturer davantage de fraudes** en fait un choix potentiellement favorable dans certaines situations.
-- Le choix entre **précision et rappel** reste important en fonction des coûts associés aux erreurs de classification.
+- Le modèle est **extrêmement fiable pour identifier les transactions non frauduleuses**.
+- Son **rappel élevé** suggère une capacité robuste à **capturer la plupart des fraudes**.
+- Ces résultats peuvent indiquer une meilleure performance par rapport au modèle k-NN.
 - L'ajustement du **seuil de classification** peut toujours être exploré pour optimiser la balance entre précision et rappel.
+
