@@ -1,3 +1,4 @@
+```
 Précision: 0.98
 Rappel: 0.79
 Aire sous la courbe ROC (AUC): 0.89
@@ -13,3 +14,4 @@ Rapport de Classification :
     accuracy                           1.00   1272524
    macro avg       0.99      0.89      0.94   1272524
 weighted avg       1.00      1.00      1.00   1272524
+```
