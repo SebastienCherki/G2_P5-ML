@@ -1,17 +1,22 @@
 # Importation des modules nécessaires
-from sklearn.neighbors import KNeighborsClassifier
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, binarize
-from sklearn.metrics import precision_score, recall_score, roc_auc_score, confusion_matrix, roc_curve, auc, classification_report
-import matplotlib.pyplot as plt
-import seaborn as sns
-import os
+from sklearn.neighbors import KNeighborsClassifier  # Importation du modèle KNeighborsClassifier
+import pandas as pd  # Importation de la bibliothèque pandas pour la manipulation des données
+from sklearn.model_selection import train_test_split  # Importation de la fonction pour diviser le jeu de données
+from sklearn.preprocessing import LabelEncoder, binarize  # Importation des outils de prétraitement des données
+from sklearn.metrics import precision_score, recall_score, roc_auc_score, confusion_matrix, roc_curve, auc, classification_report  # Importation des métriques d'évaluation
+import matplotlib.pyplot as plt  # Importation de la bibliothèque de visualisation matplotlib
+import seaborn as sns  # Importation de la bibliothèque de visualisation seaborn
+import os  # Importation du module pour la gestion des chemins de fichiers
 
-# Fonction pour plotter la matrice de confusion
+# Fonction pour afficher la matrice de confusion
 def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
+    # Binarisation des prédictions avec un seuil spécifié
     y_pred = (y_scores > threshold).astype(int)
+    
+    # Calcul de la matrice de confusion
     cm = confusion_matrix(y_true, y_pred)
+    
+    # Affichage de la matrice de confusion avec seaborn
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False,
                 xticklabels=["Pas de Fraude", "Fraude"],
@@ -22,9 +27,9 @@ def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
     plt.show()
 
 # Chargement du fichier CSV nettoyé depuis le chemin spécifique
-script_directory = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_directory, '..', 'data', 'bank.csv')
-df = pd.read_csv(file_path)
+script_directory = os.path.dirname(os.path.abspath(__file__))  # Obtention du répertoire du script
+file_path = os.path.join(script_directory, '..', 'data', 'bank.csv')  # Obtention du chemin du fichier CSV
+df = pd.read_csv(file_path)  # Chargement des données dans un DataFrame pandas
 
 # Initialisation de la fonction LabelEncoder()
 label_encoder = LabelEncoder()
@@ -44,7 +49,7 @@ y_binary = binarize(y.values.reshape(-1, 1)).ravel()
 # Division du Dataset en un ensemble d'entraînement et un ensemble de test
 X_train, X_test, y_train, y_test = train_test_split(X, y_binary, test_size=0.2, random_state=125)
 
-# KNeighborsClassifier
+# Initialisation du modèle KNeighborsClassifier avec 5 voisins
 knn_classifier = KNeighborsClassifier(n_neighbors=5)  # Vous pouvez ajuster le nombre de voisins (n_neighbors) selon vos besoins
 knn_classifier.fit(X_train, y_train)
 
