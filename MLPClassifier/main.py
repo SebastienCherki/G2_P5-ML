@@ -1,12 +1,12 @@
 # Importation des modules nécessaires
-from sklearn.neural_network import MLPClassifier
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, binarize
-from sklearn.metrics import precision_score, recall_score, roc_auc_score, confusion_matrix, roc_curve, auc, classification_report
-import matplotlib.pyplot as plt
-import seaborn as sns
-import os
+from sklearn.neural_network import MLPClassifier  # Importation du modèle MLPClassifier
+import pandas as pd  # Importation de la bibliothèque pandas pour la manipulation des données
+from sklearn.model_selection import train_test_split  # Importation de la fonction pour diviser le jeu de données
+from sklearn.preprocessing import LabelEncoder, binarize  # Importation des outils de prétraitement des données
+from sklearn.metrics import precision_score, recall_score, roc_auc_score, confusion_matrix, roc_curve, auc, classification_report  # Importation des métriques d'évaluation
+import matplotlib.pyplot as plt  # Importation de la bibliothèque de visualisation matplotlib
+import seaborn as sns  # Importation de la bibliothèque de visualisation seaborn
+import os  # Importation du module pour la gestion des chemins de fichiers
 
 # Fonction pour afficher la matrice de confusion
 def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
@@ -27,9 +27,9 @@ def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
     plt.show()
 
 # Chargement du fichier CSV nettoyé depuis le chemin spécifique
-script_directory = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_directory, '..', 'data', 'bank.csv')
-df = pd.read_csv(file_path)
+script_directory = os.path.dirname(os.path.abspath(__file__))  # Obtention du répertoire du script
+file_path = os.path.join(script_directory, '..', 'data', 'bank.csv')  # Obtention du chemin du fichier CSV
+df = pd.read_csv(file_path)  # Chargement des données dans un DataFrame pandas
 
 # Initialisation de la fonction LabelEncoder()
 label_encoder = LabelEncoder()
