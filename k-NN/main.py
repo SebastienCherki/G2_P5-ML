@@ -1,12 +1,12 @@
-import pandas as pd
-import seaborn as sns
-from matplotlib import pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import make_pipeline
-import os
+import pandas as pd  # Importation de la bibliothèque pandas pour la manipulation des données
+import seaborn as sns  # Importation de la bibliothèque de visualisation seaborn
+from matplotlib import pyplot as plt  # Importation de la bibliothèque de visualisation matplotlib
+from sklearn.model_selection import train_test_split  # Importation de la fonction pour diviser le jeu de données
+from sklearn.neighbors import KNeighborsClassifier  # Importation du modèle k-NN
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc  # Importation des métriques d'évaluation
+from sklearn.preprocessing import StandardScaler  # Importation de l'outil de prétraitement des données
+from sklearn.pipeline import make_pipeline  # Importation de l'outil pour créer un pipeline
+import os  # Importation du module pour la gestion des chemins de fichiers
 
 # Configuration de la visualisation
 sns.set()
@@ -41,7 +41,10 @@ def plot_confusion_matrix(y_true, y_scores, threshold=0.5):
 ordre_des_colonnes = ['step', 'type', 'amount', 'nameOrig', 'oldbalanceOrg', 'newbalanceOrig',
                       'nameDest', 'oldbalanceDest', 'newbalanceDest', 'isFraud', 'isFlaggedFraud']
 
+# Obtention du répertoire du script
 script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Obtention du chemin du fichier CSV
 file_path = os.path.join(script_directory, '..', 'data', 'bank_clean.csv')
 
 # Charger le fichier CSV nettoyé dans un DataFrame
@@ -53,7 +56,7 @@ X = df.select_dtypes(include=['float64', 'int64'])
 # Diviser les données en ensembles d'entraînement et de test
 X_train, X_test, y_train, y_test = train_test_split(X, df['isFraud'], test_size=0.2, random_state=42)
 
-# Initialiser un modèle k-NN
+# Initialiser un modèle k-NN avec prétraitement des données
 model = make_pipeline(StandardScaler(), KNeighborsClassifier(n_neighbors=5))
 
 # Entraîner le modèle sur l'ensemble d'entraînement
