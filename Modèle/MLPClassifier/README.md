@@ -1,44 +1,42 @@
-```
-Précision: 1.00
-Rappel: 0.01
-Aire sous la courbe ROC (AUC): 0.51
-Matrice de Confusion:
-[[1270901       0]
- [   1599      24]]
-Rapport de Classification :
-               precision    recall  f1-score   support
+# Analyse des Performances du Modèle MLPClassifier
 
-           0       1.00      1.00      1.00   1270901
-           1       1.00      0.01      0.03      1623
+## Résultats du Modèle MLPClassifier
 
-    accuracy                           1.00   1272524
-   macro avg       1.00      0.51      0.51   1272524
-weighted avg       1.00      1.00      1.00   1272524
-```
+**Précision:** 1.00 | **Rappel:** 0.01 | **AUC:** 0.51
+
+## Matrice de Confusion
+
+|               | Prédit Pas de Fraude | Prédit Fraude |
+| ------------- | -------------------- | ------------- |
+| **Réel Pas de Fraude** | 1270901 | 0 |
+| **Réel Fraude** | 1599 | 24 |
+
+## Rapport de Classification
+
+|                | Précision | Recall | F1-Score | Support |
+| -------------- | --------- | ------ | -------- | ------- |
+| **Pas de Fraude**   | 1.00      | 1.00   | 1.00     | 1270901 |
+| **Fraude**         | 1.00      | 0.01   | 0.03     | 1623    |
+
+### Interprétation
+
+Le modèle MLPClassifier présente une précision parfaite de 1.00, indiquant une fiabilité totale lorsqu'il prédit une fraude. Cependant, son rappel est extrêmement bas à 0.01, suggérant qu'il manque la grande majorité des transactions frauduleuses.
+
+L'AUC est de 0.51, indiquant une capacité de discrimination très faible du modèle.
+
+### Matrice de Confusion
+
+La matrice de confusion montre un nombre élevé de vrais négatifs (transactions non frauduleuses) correctement classées, mais un nombre très élevé de faux négatifs (fraudes manquées).
+
+### Rapport de Classification
+
+Le rapport de classification met en évidence une précision parfaite mais un rappel extrêmement bas, indiquant une performance limitée du modèle pour détecter les fraudes.
+
+### Implications Pratiques
+
+- Le modèle MLPClassifier est très fiable pour identifier les transactions non frauduleuses.
+- Cependant, il manque la grande majorité des transactions frauduleuses en raison du rappel très bas.
+- Les performances globales du modèle pour la détection de fraudes nécessitent des améliorations.
 
 ![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/MLPClassifier/Matrice%20de%20Confusion.png)
 ![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/MLPClassifier/ROC.png)
-
-# Évaluation des Performances du Modèle MLPClassifier
-
-Le modèle MLPClassifier a été évalué pour sa capacité à **détecter la fraude** dans les transactions. Les résultats obtenus sont les suivants :
-
-### Précision:
-Le modèle présente une **précision parfaite de 1.00**, indiquant une fiabilité totale lorsqu'il prédit une fraude.
-
-### Rappel:
-Avec un **rappel de 0.01**, le modèle réussit à **capturer seulement 1%** de toutes les transactions frauduleuses.
-
-### Aire sous la courbe ROC (AUC):
-L'**AUC atteint 0.51**, indiquant une capacité de discrimination minimale.
-
-### Interprétation:
-
-Le modèle MLPClassifier présente une **précision parfaite**, mais son **rappel extrêmement bas** et son **AUC faible** soulignent des défis majeurs dans la détection de la fraude.
-
-## Implications Pratiques:
-
-- Bien que le modèle soit **parfaitement précis dans la prédiction des fraudes**, il manque la grande majorité des transactions frauduleuses, comme indiqué par le **rappel très bas**.
-- L'AUC de 0.51 suggère une **capacité de discrimination faible** par rapport aux autres modèles évalués.
-- Des ajustements significatifs ou l'exploration d'autres approches peuvent être nécessaires pour améliorer la performance du modèle dans la détection de la fraude.
-
