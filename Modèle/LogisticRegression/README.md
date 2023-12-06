@@ -15,8 +15,8 @@ Rapport de Classification :
    macro avg       0.89      0.72      0.78   1272524
 weighted avg       1.00      1.00      1.00   1272524
 ```
-![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/LogisticRegression/Matrice%20de%20Confusion.png)
-![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/LogisticRegression/ROC.png)
+![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/LogisticRegression/Matrice%20de%20Confusion.png)
+![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/LogisticRegression/ROC.png)
 
 # Évaluation des Performances du Modèle LogisticRegression
 
