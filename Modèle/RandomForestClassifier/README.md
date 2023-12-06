@@ -1,50 +1,42 @@
-```
-Précision: 0.98
-Rappel: 0.79
-Aire sous la courbe ROC (AUC): 0.89
-Matrice de Confusion:
-[[1270881      20]
- [    348    1275]]
-Rapport de Classification :
-               precision    recall  f1-score   support
+# Analyse des Performances du Modèle RandomForestClassifier
 
-           0       1.00      1.00      1.00   1270901
-           1       0.98      0.79      0.87      1623
+## Résultats du Modèle RandomForestClassifier
 
-    accuracy                           1.00   1272524
-   macro avg       0.99      0.89      0.94   1272524
-weighted avg       1.00      1.00      1.00   1272524
-```
+**Précision:** 0.98 | **Rappel:** 0.79 | **AUC:** 0.89
+
+## Matrice de Confusion
+
+|               | Prédit Pas de Fraude | Prédit Fraude |
+| ------------- | -------------------- | ------------- |
+| **Réel Pas de Fraude** | 1270881 | 20 |
+| **Réel Fraude** | 348 | 1275 |
+
+## Rapport de Classification
+
+|                | Précision | Recall | F1-Score | Support |
+| -------------- | --------- | ------ | -------- | ------- |
+| **Pas de Fraude**   | 1.00      | 1.00   | 1.00     | 1270901 |
+| **Fraude**         | 0.98      | 0.79   | 0.87     | 1623    |
+
+### Interprétation
+
+Le modèle RandomForestClassifier présente une précision élevée de 0.98, indiquant une fiabilité d'environ 98% lorsqu'il prédit une fraude. Son rappel est de 0.79, montrant une capacité à capturer environ 79% de toutes les transactions frauduleuses.
+
+L'AUC est de 0.89, indiquant une bonne capacité de discrimination du modèle.
+
+### Matrice de Confusion
+
+La matrice de confusion montre un nombre élevé de vrais négatifs (transactions non frauduleuses) correctement classées, et relativement peu de faux négatifs (fraudes manquées).
+
+### Rapport de Classification
+
+Le rapport de classification met en évidence une précision élevée et un rappel raisonnable, indiquant une performance globale solide.
+
+### Implications Pratiques
+
+- Le modèle RandomForestClassifier est très fiable pour identifier les transactions non frauduleuses.
+- Il capture une proportion significative de transactions frauduleuses.
+- Les performances élevées suggèrent une robustesse du modèle pour cette tâche spécifique.
+
 ![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/RandomForestClassifier/Matrice%20de%20Confusion.png)
 ![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/RandomForestClassifier/ROC.png)
-
-# Évaluation des Performances du Modèle RandomForestClassifier
-
-Le modèle RandomForestClassifier a été évalué pour sa capacité à **détecter la fraude** dans les transactions. Les résultats obtenus sont les suivants :
-
-### Précision:
-Le modèle présente une **précision de 0.98**, indiquant une fiabilité exceptionnelle d'environ 98% lorsqu'il prédit une fraude.
-
-### Rappel:
-Avec un **rappel de 0.79**, le modèle réussit à **capturer environ 79%** de toutes les transactions frauduleuses.
-
-### Aire sous la courbe ROC (AUC):
-L'**AUC atteint 0.89**, démontrant une capacité solide du modèle à discriminer entre les classes.
-
-### Matrice de Confusion:
-La matrice révèle un grand nombre de **vrais négatifs (transactions non frauduleuses)** correctement classées, avec seulement quelques **faux négatifs (fraudes manquées)**.
-
-### Rapport de Classification:
-Le rapport détaille davantage la performance du modèle, mettant en évidence une **précision exceptionnellement élevée** et un **rappel solide**.
-
-## Interprétation:
-
-Le modèle RandomForestClassifier démontre une **excellente précision**, assurant une fiabilité exceptionnelle lorsqu'il prédit une fraude. Son **rappel solide** indique une capacité notable à capturer la majorité des fraudes. L'**AUC élevé** confirme la capacité du modèle à discriminer entre les classes.
-
-## Implications Pratiques:
-
-- Le modèle est **extrêmement fiable pour identifier les transactions non frauduleuses**.
-- Son **rappel élevé** suggère une capacité robuste à **capturer la plupart des fraudes**.
-- Ces résultats peuvent indiquer une meilleure performance par rapport au modèle k-NN.
-- L'ajustement du **seuil de classification** peut toujours être exploré pour optimiser la balance entre précision et rappel.
-
