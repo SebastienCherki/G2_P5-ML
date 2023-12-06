@@ -15,5 +15,5 @@ Rapport de Classification :
    macro avg       0.97      0.84      0.90   1272524
 weighted avg       1.00      1.00      1.00   1272524
 ```
-![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/k-NN/Matrice%20de%20Confusion.png)
-![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/k-NN/ROC.png)
+![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/XGBRegressor/Matrice%20de%20Confusion.png)
+![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/XGBRegressor/ROC.png)
