@@ -16,8 +16,8 @@ Rapport de Classification :
 weighted avg       1.00      1.00      1.00   1272524
 ```
 
-![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/MLPClassifier/Matrice%20de%20Confusion.png)
-![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/MLPClassifier/ROC.png)
+![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/MLPClassifier/Matrice%20de%20Confusion.png)
+![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/MLPClassifier/ROC.png)
 
 # Évaluation des Performances du Modèle MLPClassifier
 
