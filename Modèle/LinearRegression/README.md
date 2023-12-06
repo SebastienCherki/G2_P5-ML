@@ -29,12 +29,6 @@ Le modèle LinearRegression présente une précision parfaite de 1.00, indiquant
 - Les performances élevées en termes de précision suggèrent que le modèle est très fiable pour identifier les transactions non frauduleuses.
 - Cependant, le rappel très bas indique que le modèle manque la grande majorité des transactions frauduleuses.
 - L'utilisation de la Linear Regression pour la classification peut ne pas être appropriée pour cette tâche spécifique.
-
-## Code Utilisé
-
-```python
-# Le code Python utilisé pour entraîner et évaluer le modèle LinearRegression
-(importé depuis votre script)
-
+  
 ![Matrice de Confusion.](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/LinearRegression/Matrice%20de%20Confusion.png)
 ![Courbe ROC](https://github.com/SebastienCherki/G2_P5-ML/blob/main/Mod%C3%A8le/LinearRegression/ROC.png)
