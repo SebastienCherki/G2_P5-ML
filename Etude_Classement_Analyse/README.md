@@ -17,7 +17,7 @@ Nous utiliserons les métriques suivantes pour évaluer les performances :
 
 ### Classement des Algorithmes
 
-Les trois meilleurs algorithmes seront classés en fonction d'une pondération des métriques. La pondération peut être ajustée en fonction de l'importance relative des métriques pour votre application spécifique.
+Les trois meilleurs algorithmes seront classés en fonction d'une pondération des métriques. La pondération peut être ajustée en fonction de l'importance relative des métriques pour chaque application spécifique.
 
 ### Résultats
 
@@ -47,9 +47,9 @@ Les trois meilleurs algorithmes seront classés en fonction d'une pondération d
 
 ### Classement
 
-Le classement des trois meilleurs algorithmes peut être établi en fonction de la pondération des métriques. Vous pouvez attribuer des poids spécifiques à chaque métrique en fonction de vos besoins spécifiques. Par exemple, si la détection précise de fraudes est plus importante que le temps de réponse, vous pouvez donner plus de poids aux métriques de détection.
+Le classement des trois meilleurs algorithmes peut être établi en fonction de la pondération des métriques.
 
-En fonction des performances globales et des poids attribués, vous pouvez établir un classement personnalisé des trois meilleurs algorithmes pour votre cas d'utilisation spécifique. N'hésitez pas à ajuster les pondérations en fonction de vos priorités spécifiques.
+En fonction des performances globales et des poids attribués, on peut établir un classement personnalisé des trois meilleurs algorithmes pour notre cas d'utilisation spécifique. 
 
 ## Analyse approfondie sur les trois meilleurs algorithmes
 
