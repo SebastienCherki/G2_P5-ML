@@ -1,6 +1,6 @@
-# Synthèse des Modèles
+## Synthèse des Modèles
 
-## Modèle k-NN (KNeighborsClassifier)
+### Modèle k-NN (KNeighborsClassifier)
 - **Précision:** 0.88
 - **Rappel:** 0.54
 - **Aire sous la courbe ROC (AUC):** 0.77
@@ -13,7 +13,7 @@
 - Le choix entre précision et rappel dépend des coûts associés aux erreurs de classification.
 - L'ajustement du seuil de classification peut optimiser la balance entre précision et rappel en fonction des besoins spécifiques.
 
-## Modèle RandomForestClassifier
+### Modèle RandomForestClassifier
 - **Précision:** 0.98
 - **Rappel:** 0.79
 - **Aire sous la courbe ROC (AUC):** 0.89
@@ -25,7 +25,7 @@
 - La balance entre précision et rappel est favorable.
 - Adapté pour une utilisation dans la détection de la fraude.
 
-## Modèle MLPClassifier
+### Modèle MLPClassifier
 - **Précision:** 1.00
 - **Rappel:** 0.01
 - **Aire sous la courbe ROC (AUC):** 0.51
@@ -37,7 +37,7 @@
 - Manque de sensibilité pour détecter les fraudes.
 - Nécessite des ajustements pour améliorer la détection des fraudes.
 
-## Modèle LogisticRegression
+### Modèle LogisticRegression
 - **Précision:** 0.78
 - **Rappel:** 0.44
 - **Aire sous la courbe ROC (AUC):** 0.72
@@ -48,7 +48,7 @@
 - Équilibre entre précision et rappel.
 - Peut nécessiter des ajustements pour améliorer les performances globales.
 
-## Modèle XGBRegressor
+### Modèle XGBRegressor
 - **Précision:** 0.94
 - **Rappel:** 0.68
 - **Aire sous la courbe ROC (AUC):** 0.99
@@ -60,7 +60,7 @@
 - Bien équilibré entre précision et rappel.
 - Adapté pour une utilisation dans la détection de la fraude.
 
-## Modèle XGBClassifier
+### Modèle XGBClassifier
 - **Précision:** 0.96
 - **Rappel:** 0.86
 - **Aire sous la courbe ROC (AUC):** 1.00
@@ -71,7 +71,7 @@
 - Performances exceptionnelles dans la détection des fraudes.
 - Choix optimal pour une haute précision et un rappel élevé.
 
-## Modèle DecisionTreeClassifier
+### Modèle DecisionTreeClassifier
 - **Précision:** 0.87
 - **Rappel:** 0.87
 - **Aire sous la courbe ROC (AUC):** 0.93
@@ -82,7 +82,7 @@
 - Bon équilibre entre précision et rappel.
 - Performant dans la détection des fraudes.
 
-## Modèle RidgeRegression
+### Modèle RidgeRegression
 - **Précision:** 1.00
 - **Rappel:** 0.09
 - **Aire sous la courbe ROC (AUC):** 0.93
@@ -93,7 +93,7 @@
 - Efficace pour les transactions non frauduleuses.
 - Inadéquat pour la détection des fraudes en raison d'un rappel très bas.
 
-## Modèle RandomForestClassifier
+### Modèle RandomForestClassifier
 - **Précision:** 0.98
 - **Rappel:** 0.79
 - **Aire sous la courbe ROC (AUC):** 0.89
@@ -104,7 +104,7 @@
 - Performances élevées dans la détection des fraudes.
 - Bon équilibre entre précision et rappel.
 
-## Modèle MLPClassifier
+### Modèle MLPClassifier
 - **Précision:** 1.00
 - **Rappel:** 0.01
 - **Aire sous la courbe ROC (AUC):** 0.51
@@ -116,7 +116,7 @@
 - Mauvaise sensibilité à détecter les fraudes.
 - Des ajustements sont nécessaires pour améliorer la performance globale.
 
-## Modèle LogisticRegression
+### Modèle LogisticRegression
 - **Précision:** 0.78
 - **Rappel:** 0.44
 - **Aire sous la courbe ROC (AUC):** 0.72
@@ -127,7 +127,7 @@
 - Équilibre entre précision et rappel.
 - Des ajustements peuvent être nécessaires pour améliorer les performances globales.
 
-## Modèle LinearRegression
+### Modèle LinearRegression
 - **Précision:** N/A
 - **Rappel:** N/A
 - **Aire sous la courbe ROC (AUC):** 0.93
@@ -137,7 +137,7 @@
 *Implications Pratiques :*
 - Non recommandé pour la détection des fraudes en tant que modèle de classification binaire.
 
-## Modèle LassoRegression
+### Modèle LassoRegression
 - **Précision:** 1.00
 - **Rappel:** 0.07
 - **Aire sous la courbe ROC (AUC):** 0.96
@@ -149,7 +149,7 @@
 - Mauvaise sensibilité à détecter les fraudes.
 - Non recommandé pour la détection des fraudes en raison du rappel très bas.
 
-## Modèle LGBMRegressor
+### Modèle LGBMRegressor
 - **Mean Squared Error (MSE):** 0.00
 - **R-squared (R2):** 0.67
 - **Précision:** 0.98
@@ -162,7 +162,7 @@
 - Performances élevées dans la détection des fraudes.
 - Adapté pour une utilisation dans la détection de la fraude.
 
-## Modèle LGBMClassifier
+### Modèle LGBMClassifier
 - **Précision:** 0.09
 - **Rappel:** 0.18
 - **Aire sous la courbe ROC (AUC):** 0.42
@@ -173,7 +173,7 @@
 - Performances globalement médiocres.
 - Non recommandé pour la détection des fraudes en raison de la faible précision et du faible rappel.
 
-## Modèle KMeans
+### Modèle KMeans
 - **Précision:** 0.00
 - **Rappel:** 0.01
 - **Aire sous la courbe ROC (AUC):** N/A
@@ -183,7 +183,7 @@
 *Implications Pratiques :*
 - Non recommandé pour la détection des fraudes en tant que modèle de classification binaire.
 
-## Modèle GradientBoostingRegressor
+### Modèle GradientBoostingRegressor
 - **Précision:** 0.00
 - **Rappel:** 0.81
 - **Aire sous la courbe ROC (AUC):** N/A
@@ -193,7 +193,7 @@
 *Implications Pratiques :*
 - Non approprié pour la détection des fraudes en tant que modèle de classification binaire.
 
-## Modèle AgglomerativeClustering
+### Modèle AgglomerativeClustering
 - **Précision:** 0.00
 - **Rappel:** 0.81
 - **Aire sous la courbe ROC (AUC):** N/A
@@ -203,7 +203,7 @@
 *Implications Pratiques :*
 - Non recommandé pour la détection des fraudes en tant que modèle de classification binaire.
 
-# Conclusion
+## Conclusion
 
 En évaluant les performances de plusieurs modèles de détection de fraude, il est possible de tirer des conclusions utiles pour orienter le choix du modèle optimal en fonction des priorités spécifiques du problème. Voici quelques observations clés :
 
