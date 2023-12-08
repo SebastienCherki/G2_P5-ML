@@ -1,5 +1,5 @@
 # Importation des modules nécessaires
-from sklearn.neighbors import KNeighborsClassifier  # Importation du modèle KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier  # Importation du modèle RandomForestClassifier
 import pandas as pd  # Importation de la bibliothèque pandas pour la manipulation des données
 from sklearn.model_selection import train_test_split  # Importation de la fonction pour diviser le jeu de données
 from sklearn.preprocessing import LabelEncoder, binarize  # Importation des outils de prétraitement des données
@@ -49,46 +49,46 @@ y_binary = binarize(y.values.reshape(-1, 1)).ravel()
 # Division du Dataset en un ensemble d'entraînement et un ensemble de test
 X_train, X_test, y_train, y_test = train_test_split(X, y_binary, test_size=0.2, random_state=125)
 
-# Initialisation du modèle KNeighborsClassifier avec 5 voisins
-knn_classifier = KNeighborsClassifier(n_neighbors=5)  # Vous pouvez ajuster le nombre de voisins (n_neighbors) selon vos besoins
-knn_classifier.fit(X_train, y_train)
+# Initialisation du modèle RandomForestClassifier avec 100 estimateurs
+rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)  # Vous pouvez ajuster le nombre d'estimateurs (n_estimators) selon vos besoins
+rf_classifier.fit(X_train, y_train)
 
 # Test du modèle
-predictions = knn_classifier.predict(X_test)
+predictions_rf = rf_classifier.predict(X_test)
 
 # Binarisation des prédictions
-predictions_binary = binarize(predictions.reshape(-1, 1)).ravel()
+predictions_binary_rf = binarize(predictions_rf.reshape(-1, 1)).ravel()
 
-# Calcul de la précision, du rappel et de l'AUC
-precision = precision_score(y_test, predictions_binary)
-recall = recall_score(y_test, predictions_binary)
-roc_auc = roc_auc_score(y_test, predictions)
+# Calcul de la précision, du rappel et de l'AUC pour RandomForestClassifier
+precision_rf = precision_score(y_test, predictions_binary_rf)
+recall_rf = recall_score(y_test, predictions_binary_rf)
+roc_auc_rf = roc_auc_score(y_test, predictions_rf)
 
-# Affichage des résultats d'évaluation
-print("Précision: {:.2f}".format(precision))
-print("Rappel: {:.2f}".format(recall))
-print("Aire sous la courbe ROC (AUC): {:.2f}".format(roc_auc))
+# Affichage des résultats d'évaluation pour RandomForestClassifier
+print("Précision (RandomForest): {:.2f}".format(precision_rf))
+print("Rappel (RandomForest): {:.2f}".format(recall_rf))
+print("Aire sous la courbe ROC (AUC) (RandomForest): {:.2f}".format(roc_auc_rf))
 
-# Évaluer les performances du modèle avec confusion_matrix
-cm = confusion_matrix(y_test, predictions_binary)
-print("Matrice de Confusion:")
-print(cm)
+# Évaluer les performances du modèle RandomForestClassifier avec confusion_matrix
+cm_rf = confusion_matrix(y_test, predictions_binary_rf)
+print("Matrice de Confusion (RandomForest):")
+print(cm_rf)
 
-# Afficher la matrice de confusion sous forme de diagramme avec seaborn
-plot_confusion_matrix(y_test, predictions_binary)
+# Afficher la matrice de confusion pour RandomForestClassifier
+plot_confusion_matrix(y_test, predictions_binary_rf)
 
-# Afficher la courbe ROC
-fpr, tpr, thresholds = roc_curve(y_test, predictions)
-area_under_curve = auc(fpr, tpr)
+# Afficher la courbe ROC pour RandomForestClassifier
+fpr_rf, tpr_rf, thresholds_rf = roc_curve(y_test, predictions_rf)
+area_under_curve_rf = auc(fpr_rf, tpr_rf)
 
 plt.figure()
-plt.plot(fpr, tpr, color='darkorange', lw=2, label='Courbe ROC (AUC = {:.2f})'.format(area_under_curve))
+plt.plot(fpr_rf, tpr_rf, color='darkorange', lw=2, label='Courbe ROC (AUC = {:.2f}) (RandomForest)'.format(area_under_curve_rf))
 plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
 plt.xlabel('Taux de faux positifs')
 plt.ylabel('Taux de vrais positifs')
-plt.title('Courbe ROC')
+plt.title('Courbe ROC (RandomForest)')
 plt.legend(loc="lower right")
 plt.show()
 
-# Afficher le rapport de classification
-print("Rapport de Classification :\n", classification_report(y_test, predictions_binary))
+# Afficher le rapport de classification pour RandomForestClassifier
+print("Rapport de Classification (RandomForest) :\n", classification_report(y_test, predictions_binary_rf))
