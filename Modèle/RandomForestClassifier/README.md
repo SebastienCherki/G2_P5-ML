@@ -1,4 +1,4 @@
-# Analyse des Performances du Modèle RandomForestClassifier avant nettoyage des données
+# Analyse des Performances du Modèle RandomForestClassifier
 
 ## Résultats du Modèle RandomForestClassifier
 
